@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-   :file_folder: <i>upload-example</i>
+   :file_folder: <i>file-upload-example</i>
   </h1>
 
   <p>

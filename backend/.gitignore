@@ -114,3 +114,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# vscode settings
+.vscode/settings.json
+
+# dev uploads
+tmp/uploads/*
+!tmp/uploads/.gitkeep
