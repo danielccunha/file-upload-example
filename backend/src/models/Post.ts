@@ -1,5 +1,8 @@
 import { Schema, model, Document } from 'mongoose';
 import aws from 'aws-sdk';
+import path from 'path';
+import fs from 'fs';
+import { promisify } from 'util';
 
 const s3 = new aws.S3();
 
@@ -40,7 +43,9 @@ PostSchema.pre<PostInterface>('remove', function () {
       })
       .promise();
   } else {
-    return Promise.resolve();
+    return promisify(fs.unlink)(
+      path.resolve(__dirname, '..', '..', 'tmp', 'uploads', this.key)
+    );
   }
 });
 
