@@ -33,11 +33,15 @@ class PostController {
 
   async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const post = await Post.findByIdAndDelete(id);
+    const post = await Post.findById(id);
 
+    // Verify if post exists
     if (!post) {
       return response.status(404).json({ error: 'Post not found.' });
     }
+
+    // Delete the post
+    await post.remove();
 
     return response.status(204).send();
   }

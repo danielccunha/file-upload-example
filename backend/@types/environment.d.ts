@@ -1,7 +1,8 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      PORT?: string;
+      PORT?: number;
+      APP_URL: string;
       MORGAN_MODE?: string;
       MONGO_URL: string;
       AWS_BUCKET_NAME: string;

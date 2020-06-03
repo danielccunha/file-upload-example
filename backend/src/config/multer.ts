@@ -40,7 +40,10 @@ const storageTypes = {
 
 const config: multer.Options = {
   dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
-  storage: storageTypes.s3,
+  storage:
+    process.env.NODE_ENV === 'production'
+      ? storageTypes.s3
+      : storageTypes.local,
   limits: {
     fileSize: 2 * 1024 * 1024,
   },
