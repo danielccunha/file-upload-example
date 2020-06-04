@@ -41,5 +41,5 @@ export const UploadMessage = styled.p<UploadMessageInterface>`
   color: ${(props) => messageColors[props.type || "default"]};
   justify-content: center;
   align-items: center;
-  padding: 30px 0;
+  padding: 50px 0;
 `;
