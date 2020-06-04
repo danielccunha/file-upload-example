@@ -21,7 +21,7 @@ const Upload: React.FC<UploadInterface> = ({ onUpload }) => {
   };
 
   return (
-    <Dropzone accept="image/*" onDropAccepted={onUpload}>
+    <Dropzone accept="image/*" onDropAccepted={onUpload} multiple={false}>
       {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
         <DropContainer
           {...getRootProps()}
