@@ -4,6 +4,12 @@ import crypto from 'crypto';
 import aws from 'aws-sdk';
 import multerS3 from 'multer-s3';
 
+const generateName = (originalName: string, hash: string) => {
+  // Best way I found to remove all white spaces
+  originalName = originalName.split(' ').join('_');
+  return `${hash}-${originalName}`;
+};
+
 const storageTypes = {
   local: multer.diskStorage({
     destination: (request, file, callback) => {
@@ -15,7 +21,7 @@ const storageTypes = {
           return callback(err, '');
         }
 
-        const filename = `${hash.toString('hex')}-${file.originalname}`;
+        const filename = generateName(file.originalname, hash.toString('hex'));
         callback(null, filename);
       });
     },
@@ -31,7 +37,7 @@ const storageTypes = {
           return callback(err, '');
         }
 
-        const filename = `${hash.toString('hex')}-${file.originalname}`;
+        const filename = generateName(file.originalname, hash.toString('hex'));
         callback(null, filename);
       });
     },
